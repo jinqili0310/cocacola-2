@@ -22,7 +22,7 @@ class Question {
 
 function createQuestions() {
 
-	prescripted_questions[0] = new Question([`Hi. I am Julia, Coca-Cola's chatbot powered by artificial intelligence. I am still learning so I might have difficulty understanding you sometimes, but I will answer your company-related questions.`], 'Thanks. How are you?', 1)
+	prescripted_questions[0] = new Question([``], 'Thanks. How are you?', 1)
 	prescripted_questions[1] = new Question(['I am fine. What can I help you with today?'], 'When was Coca-Cola founded?', 2)
 	prescripted_questions[2] = new Question(["Our company was founded in 1892. That's 128 years ago."], 'Where is the company located?', 3)
 	prescripted_questions[3] = new Question(["Our company is headquartered in Atlanta, Georgia. But I believe we now operate worldwide."], "How many countries carry your products?", 4);
@@ -231,9 +231,9 @@ function displayBot()
 
 	
 	// if(user_name == '') {
-	// 	setTimeout(function() {
-	// 	    postBotAnswer("Hi. I am Julia, Coca-Cola's chatbot powered by artificial intelligence. I am still learning so I might have difficulty understanding you sometimes, but I will answer your company-related questions.")
-	// 	}, 500);
+		setTimeout(function() {
+		    postBotAnswer("Hi. I am Julia, Coca-Cola's chatbot powered by artificial intelligence. I am still learning so I might have difficulty understanding you sometimes, but I will answer your company-related questions.")
+		}, 500);
 	// }
 }
 
