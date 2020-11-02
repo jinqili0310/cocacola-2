@@ -45,7 +45,7 @@ function askNextQuestion(answer_text) {
 	var next_question = prescripted_questions[cur_question_index].next_questions; //one number as index
 	
 	// check answer to select the next question
-	var pretext =  "";
+	// var pretext =  "";
 
 	if(answer_text.toLowerCase() == answer.toLowerCase()) {
 		if(next_question > -1) {
@@ -66,11 +66,11 @@ function askNextQuestion(answer_text) {
 						postBotAnswer(text);
 					}, 2000);*/
 
+				post_text = text;
+				
 					if (pretext_needed.includes(cur_question_index)) {
-						post_text = pretext + post_text;
-					} else {
-						post_text = text;
-					}
+						post_text = post_text;
+					} 
 					
 					// if (text.split(' ').length > 20) { //long sentence
 					// 	setTimeout(function() {
@@ -121,6 +121,9 @@ function postBotAnswer(text)
 	// clearInterval(waitForBot);
 	
 	if (text!="") {
+    	var audio = new Audio('https://kikijinqili.github.io/assets/cocacola/audio/Pling-KevanGC-1485374730.mp3');
+		audio.play();
+
 		var newNode = document.createElement("div");
     	newNode.setAttribute("class", "chat_message_bot");
     	var newImg = document.createElement("img");
@@ -132,8 +135,6 @@ function postBotAnswer(text)
     	document.getElementById("chat_box").insertBefore(newNode, spaceHolderNode);
     	document.getElementById("chat_box").scrollTop = document.getElementById("chat_box").scrollHeight;
 
-    	var audio = new Audio('https://kikijinqili.github.io/assets/cocacola/audio/Pling-KevanGC-1485374730.mp3');
-		audio.play();
 	}
 	
 	setTimeout(function() {
