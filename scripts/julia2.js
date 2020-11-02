@@ -53,14 +53,14 @@ function askNextQuestion(answer_text) {
 			var next_question_text = prescripted_questions[next_question].text;
 			for(var i=0; i<next_question_text.length; i++) {
 				text = next_question_text[i];
-				if(text.indexOf('gif') > -1) {
-					//post gif
-					image = text;
-					setTimeout(function() {
-						postImage(image);
-					}, 10000*(i+1));
-				} else {
-					waitForBot = setInterval(typingAnim, 900);
+				// if(text.indexOf('gif') > -1) {
+				// 	//post gif
+				// 	image = text;
+				// 	setTimeout(function() {
+				// 		postImage(image);
+				// 	}, 10000*(i+1));
+				// } else {
+					// waitForBot = setInterval(typingAnim, 900);
 					
 					/*setTimeout(function() {
 						postBotAnswer(text);
@@ -71,24 +71,25 @@ function askNextQuestion(answer_text) {
 					// 	post_text = pretext + post_text;
 					// }
 
-					if (text.split(' ').length > 20) { //long sentence
-						setTimeout(function() {
-							postBotAnswer(post_text)
-						}, 16000*(i+1));
-					} else {
-						setTimeout(function() {
-							postBotAnswer(post_text)
-						}, 10000*(i+1));
-					}
+				postBotAnswer(post_text)
+					// if (text.split(' ').length > 20) { //long sentence
+					// 	setTimeout(function() {
+					// 		postBotAnswer(post_text)
+					// 	}, 16000*(i+1));
+					// } else {
+					// 	setTimeout(function() {
+					// 		postBotAnswer(post_text)
+					// 	}, 10000*(i+1));
+					// }
 				}
-			}
+			// }
 			cur_question_index = next_question;
 			bot_typing = 0;
 		} else {
 			// the last question
-			setTimeout(function() {
+			// setTimeout(function() {
 				postBotAnswer("Thank you for chatting with me and visiting Coca-Cola's website.")
-			}, 3000);
+			// }, 3000);
 		}
 
 	} else {
@@ -168,10 +169,10 @@ function postBotAnswer(text)
 
 
 		//ask the first question
-		setTimeout(function() {
+		// setTimeout(function() {
 			postBotAnswer(prescripted_questions[cur_question_index].text);
 			prescripted_mode = 1;
-		}, 7000);
+		// }, 7000);
 	
 		valid_input = true;
 	
@@ -209,14 +210,14 @@ function typingAnim()
     //document.getElementById("chat_box").scrollTop = document.getElementById("chat_box").scrollHeight;
 
 	// after 1 second, remove this box
-	setTimeout(function() {
+	// setTimeout(function() {
 			document.getElementById("chat_box").removeChild(newNode)
-		}, 1000);
+		// }, 1000);
 
 
-	setTimeout(function() {
+	// setTimeout(function() {
 			type_anim_on = 0;
-		}, 2000);
+		// }, 2000);
 
 
     } //end if
