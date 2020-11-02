@@ -65,10 +65,11 @@ function askNextQuestion(answer_text) {
 					/*setTimeout(function() {
 						postBotAnswer(text);
 					}, 2000);*/
-					post_text = text;
 
 					if (pretext_needed.includes(cur_question_index)) {
 						post_text = pretext + post_text;
+					} else {
+						post_text = text;
 					}
 					
 					// if (text.split(' ').length > 20) { //long sentence
