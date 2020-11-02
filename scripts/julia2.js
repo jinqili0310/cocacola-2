@@ -45,11 +45,11 @@ function askNextQuestion(answer_text) {
 	var next_question = prescripted_questions[cur_question_index].next_questions; //one number as index
 	
 	// check answer to select the next question
-	// var pretext = "Oops 🤭 Sorry "  + ",";
+	var pretext =  "";
 
 	if(answer_text.toLowerCase() == answer.toLowerCase()) {
 		if(next_question > -1) {
-			bot_typing = 0;
+			bot_typing = 1;
 			var next_question_text = prescripted_questions[next_question].text;
 			for(var i=0; i<next_question_text.length; i++) {
 				text = next_question_text[i];
@@ -70,15 +70,15 @@ function askNextQuestion(answer_text) {
 					if (pretext_needed.includes(cur_question_index)) {
 						post_text = pretext + post_text;
 					}
-					postBotAnswer(post_text)
+					
 					// if (text.split(' ').length > 20) { //long sentence
 					// 	setTimeout(function() {
 					// 		postBotAnswer(post_text)
 					// 	}, 16000*(i+1));
 					// } else {
-					// 	setTimeout(function() {
-					// 		postBotAnswer(post_text)
-					// 	}, 10000*(i+1));
+						setTimeout(function() {
+							postBotAnswer(post_text)
+						}, 1000);
 					// }
 				}
 			// }
@@ -97,23 +97,23 @@ function askNextQuestion(answer_text) {
 
 }
 
-function postImage(img_filename) {
-	var newNode = document.createElement("div");
-	newNode.setAttribute("class", "chat_message_bot");
-	var newImg = document.createElement("img");
-	newImg.src = img_filename;
-	newImg.setAttribute("width", "60%");
-	//newImg.setAttribute("align", "middle");
-	newNode.appendChild(newImg);
-	newNode.setAttribute("align", "middle");
-	var spaceHolderNode = document.getElementById("test");
-	//var height = newImg.getAttribute("height");
-  	document.getElementById("chat_box").insertBefore(newNode, spaceHolderNode);
-   	//document.getElementById("chat_box").scrollTop = document.getElementById("chat_box").scrollHeight;
-   	setTimeout(function() {
-		document.getElementById("chat_box").scrollTop = document.getElementById("chat_box").scrollHeight
-	}, 500);
-}
+// function postImage(img_filename) {
+// 	var newNode = document.createElement("div");
+// 	newNode.setAttribute("class", "chat_message_bot");
+// 	var newImg = document.createElement("img");
+// 	newImg.src = img_filename;
+// 	newImg.setAttribute("width", "60%");
+// 	//newImg.setAttribute("align", "middle");
+// 	newNode.appendChild(newImg);
+// 	newNode.setAttribute("align", "middle");
+// 	var spaceHolderNode = document.getElementById("test");
+// 	//var height = newImg.getAttribute("height");
+//   	document.getElementById("chat_box").insertBefore(newNode, spaceHolderNode);
+//    	//document.getElementById("chat_box").scrollTop = document.getElementById("chat_box").scrollHeight;
+//    	setTimeout(function() {
+// 		document.getElementById("chat_box").scrollTop = document.getElementById("chat_box").scrollHeight
+// 	}, 500);
+// }
 
 function postBotAnswer(text)
 {
@@ -171,7 +171,7 @@ function postBotAnswer(text)
 		setTimeout(function() {
 			postBotAnswer(prescripted_questions[cur_question_index].text);
 			prescripted_mode = 1;
-		}, 7000);
+		}, 1000);
 	
 		valid_input = true;
 	
