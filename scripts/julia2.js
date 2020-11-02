@@ -23,7 +23,7 @@ class Question {
 function createQuestions() {
 
 	prescripted_questions[0] = new Question([``], 'Thanks. How are you?', 1)
-	prescripted_questions[1] = new Question(['aaaI am fine. What can I help you with today?'], 'When was Coca-Cola founded?', 2)
+	prescripted_questions[1] = new Question(['I am fine. What can I help you with today?'], 'When was Coca-Cola founded?', 2)
 	prescripted_questions[2] = new Question(["Our company was founded in 1892. That's 128 years ago."], 'Where is the company located?', 3)
 	prescripted_questions[3] = new Question(["Our company is headquartered in Atlanta, Georgia. But I believe we now operate worldwide."], "How many countries carry your products?", 4);
 	prescripted_questions[4] = new Question([" You can find us in more than 200 countries."], "Other than regular coke, what do you sell?", 5);
@@ -137,9 +137,9 @@ function postBotAnswer(text)
 
 	}
 	
-	setTimeout(function() {
-		document.getElementById("chat_box").scrollTop = document.getElementById("chat_box").scrollHeight
-	}, 1000);
+	// setTimeout(function() {
+	// 	document.getElementById("chat_box").scrollTop = document.getElementById("chat_box").scrollHeight
+	// }, 1000);
 }
 
  function postUserInput() 
