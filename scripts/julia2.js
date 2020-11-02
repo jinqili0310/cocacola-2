@@ -39,7 +39,7 @@ function createQuestions() {
 }
 
 function askNextQuestion(answer_text) {
-	// var pretext_needed = [4, 8];
+	var pretext_needed = [4, 8];
 	var questions = prescripted_questions[cur_question_index].text;
 	var answer = prescripted_questions[cur_question_index].answers; // one number as index
 	var next_question = prescripted_questions[cur_question_index].next_questions; //one number as index
@@ -67,29 +67,28 @@ function askNextQuestion(answer_text) {
 					}, 2000);*/
 					post_text = text;
 
-					// if (pretext_needed.includes(cur_question_index)) {
-					// 	post_text = pretext + post_text;
-					// }
+					if (pretext_needed.includes(cur_question_index)) {
+						post_text = pretext + post_text;
+					}
 
-				postBotAnswer(post_text)
-					// if (text.split(' ').length > 20) { //long sentence
-					// 	setTimeout(function() {
-					// 		postBotAnswer(post_text)
-					// 	}, 16000*(i+1));
-					// } else {
-					// 	setTimeout(function() {
-					// 		postBotAnswer(post_text)
-					// 	}, 10000*(i+1));
-					// }
+					if (text.split(' ').length > 20) { //long sentence
+						setTimeout(function() {
+							postBotAnswer(post_text)
+						}, 16000*(i+1));
+					} else {
+						setTimeout(function() {
+							postBotAnswer(post_text)
+						}, 10000*(i+1));
+					}
 				}
 			// }
 			cur_question_index = next_question;
 			bot_typing = 0;
 		} else {
 			// the last question
-			// setTimeout(function() {
+			setTimeout(function() {
 				postBotAnswer("Thank you for chatting with me and visiting Coca-Cola's website.")
-			// }, 3000);
+			}, 3000);
 		}
 
 	} else {
@@ -169,10 +168,10 @@ function postBotAnswer(text)
 
 
 		//ask the first question
-		// setTimeout(function() {
+		setTimeout(function() {
 			postBotAnswer(prescripted_questions[cur_question_index].text);
 			prescripted_mode = 1;
-		// }, 7000);
+		}, 7000);
 	
 		valid_input = true;
 	
@@ -194,35 +193,35 @@ function postBotAnswer(text)
 	
 }
 
-function typingAnim()
-{
-	if(type_anim_on == 0) {
-	type_anim_on = 1;
-	var newNode = document.createElement("div");
-    newNode.setAttribute("class", "chat_message_bot");
-    var newImg = document.createElement("img");
-    newImg.src = 'https://kikijinqili.github.io/assets/cocacola/img/avatar.png';
-    newImg.setAttribute("width", "8%");
-    newNode.appendChild(newImg);
-    newNode.appendChild(document.createTextNode(" ..."));
-    var spaceHolderNode = document.getElementById("test");
-    document.getElementById("chat_box").insertBefore(newNode, spaceHolderNode);
-    //document.getElementById("chat_box").scrollTop = document.getElementById("chat_box").scrollHeight;
+// function typingAnim()
+// {
+// 	if(type_anim_on == 0) {
+// 	type_anim_on = 1;
+// 	var newNode = document.createElement("div");
+//     newNode.setAttribute("class", "chat_message_bot");
+//     var newImg = document.createElement("img");
+//     newImg.src = 'https://kikijinqili.github.io/assets/cocacola/img/avatar.png';
+//     newImg.setAttribute("width", "8%");
+//     newNode.appendChild(newImg);
+//     newNode.appendChild(document.createTextNode(" ..."));
+//     var spaceHolderNode = document.getElementById("test");
+//     document.getElementById("chat_box").insertBefore(newNode, spaceHolderNode);
+//     //document.getElementById("chat_box").scrollTop = document.getElementById("chat_box").scrollHeight;
 
-	// after 1 second, remove this box
-	// setTimeout(function() {
-			document.getElementById("chat_box").removeChild(newNode)
-		// }, 1000);
-
-
-	// setTimeout(function() {
-			type_anim_on = 0;
-		// }, 2000);
+// 	// after 1 second, remove this box
+// 	// setTimeout(function() {
+// 			document.getElementById("chat_box").removeChild(newNode)
+// 		// }, 1000);
 
 
-    } //end if
+// 	// setTimeout(function() {
+// 			type_anim_on = 0;
+// 		// }, 2000);
 
-}
+
+//     } //end if
+
+// }
 
 function displayBot()
 {
