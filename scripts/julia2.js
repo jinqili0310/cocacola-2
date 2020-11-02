@@ -11,6 +11,9 @@ var prescripted_mode = 0;
 var cur_question_index = 0;
 var bot_typing = 0;
 
+var audio = new Audio('https://kikijinqili.github.io/assets/cocacola/audio/Pling-KevanGC-1485374730.mp3');
+audio.play();
+
 //bot-initiated dialogue
 class Question {
 	constructor(text, answers, next_questions) {
@@ -77,9 +80,9 @@ function askNextQuestion(answer_text) {
 					// 		postBotAnswer(post_text)
 					// 	}, 16000*(i+1));
 					// } else {
-						setTimeout(function() {
-							postBotAnswer(post_text)
-						}, 1000);
+						// setTimeout(function() {
+						// 	postBotAnswer(post_text)
+						// }, 1000);
 					// }
 				}
 			// }
@@ -121,7 +124,7 @@ function postBotAnswer(text)
 	// clearInterval(waitForBot);
 	
 	if (text!="") {
-    	var audio = new Audio('https://kikijinqili.github.io/assets/cocacola/audio/Pling-KevanGC-1485374730.mp3');
+    	// var audio = new Audio('https://kikijinqili.github.io/assets/cocacola/audio/Pling-KevanGC-1485374730.mp3');
 		audio.play();
 
 		var newNode = document.createElement("div");
