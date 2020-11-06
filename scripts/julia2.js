@@ -42,7 +42,7 @@ function createQuestions() {
 }
 
 function askNextQuestion(answer_text) {
-	var pretext_needed = [4, 8];
+	// var pretext_needed = [4, 8];
 	var questions = prescripted_questions[cur_question_index].text;
 	var answer = prescripted_questions[cur_question_index].answers; // one number as index
 	var next_question = prescripted_questions[cur_question_index].next_questions; //one number as index
@@ -78,9 +78,9 @@ function askNextQuestion(answer_text) {
 					}, 2000);*/
 					post_text = text;
 
-					if (pretext_needed.includes(cur_question_index)) {
-						post_text = pretext + post_text;
-					}
+					// if (pretext_needed.includes(cur_question_index)) {
+					// 	post_text = pretext + post_text;
+					// }
 
 					// if (text.split(' ').length > 22) { //long sentence
 					// 	setTimeout(function() {
