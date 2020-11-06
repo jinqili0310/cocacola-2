@@ -50,7 +50,15 @@ function askNextQuestion(answer_text) {
 	// check answer to select the next question
 	// var pretext =  "";
 
-	if(answer_text.toLowerCase() == answer.toLowerCase()) {
+	var answer_words = answer.toLowerCase().split(' ');
+	var valid_word_num = 0;
+	for(var i = 0; i<answer_words.length; i++) {
+		if(answer_text.toLowerCase().indexOf(answer_words[i])>-1) {
+			valid_word_num = valid_word_num + 1;
+		}
+	}
+
+	if(valid_word_num > (answer_words.length-3)) {
 		if(next_question > -1) {
 			bot_typing = 1;
 			var next_question_text = prescripted_questions[next_question].text;
@@ -61,28 +69,27 @@ function askNextQuestion(answer_text) {
 				// 	image = text;
 				// 	setTimeout(function() {
 				// 		postImage(image);
-				// 	}, 10000*(i+1));
+				// 	}, 5000*(i+1));
 				// } else {
-					// waitForBot = setInterval(typingAnim, 900);
+				// 	waitForBot = setInterval(typingAnim, 900);
 					
 					/*setTimeout(function() {
 						postBotAnswer(text);
 					}, 2000);*/
-
-				post_text = text;
+					post_text = text;
 
 					if (pretext_needed.includes(cur_question_index)) {
-						post_text = post_text;
-					} 
-					
-					// if (text.split(' ').length > 20) { //long sentence
+						post_text = pretext + post_text;
+					}
+
+					// if (text.split(' ').length > 22) { //long sentence
 					// 	setTimeout(function() {
 					// 		postBotAnswer(post_text)
-					// 	}, 16000*(i+1));
+					// 	}, 8500*(i+1));
 					// } else {
-						// setTimeout(function() {
-						// 	postBotAnswer(post_text)
-						// }, 1000);
+					// 	setTimeout(function() {
+					// 		postBotAnswer(post_text)
+					// 	}, 5000*(i+1));
 					// }
 				}
 			// }
@@ -91,7 +98,7 @@ function askNextQuestion(answer_text) {
 		} else {
 			// the last question
 			setTimeout(function() {
-				postBotAnswer("Thank you for chatting with me and visiting Coca-Cola's website.")
+				postBotAnswer("Thank you for chatting with me and visiting Coca-cola's website 🙂. Take care!")
 			}, 3000);
 		}
 
@@ -208,7 +215,7 @@ function postBotAnswer(text)
 //     newImg.src = 'https://kikijinqili.github.io/assets/cocacola/img/avatar.png';
 //     newImg.setAttribute("width", "8%");
 //     newNode.appendChild(newImg);
-//     // newNode.appendChild(document.createTextNode(" ..."));
+//     // newNode.appendChild(document.createTextNode(" Julia is typing ..."));
 //     var spaceHolderNode = document.getElementById("test");
 //     document.getElementById("chat_box").insertBefore(newNode, spaceHolderNode);
 //     //document.getElementById("chat_box").scrollTop = document.getElementById("chat_box").scrollHeight;
