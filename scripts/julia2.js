@@ -98,7 +98,7 @@ function askNextQuestion(answer_text) {
 		} else {
 			// the last question
 			setTimeout(function() {
-				postBotAnswer("Thank you for chatting with me and visiting Coca-cola's website 🙂. Take care!")
+				postBotAnswer("Thank you for chatting with me and visiting Coca-Cola's website.")
 			}, 3000);
 		}
 
