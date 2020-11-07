@@ -3,7 +3,7 @@ var icon_img = 'https://kikijinqili.github.io/assets/cocacola/img/avatar.png';
 var playAd = 0;
 var bye = 0;
 var sayBye// = setInterval(sayGoodbye, 600000);
-// var user_name = '';
+var user_name = '';
 var type_anim_on = 0;
 
 var prescripted_questions = new Array();
@@ -12,7 +12,7 @@ var cur_question_index = 0;
 var bot_typing = 0;
 
 var audio = new Audio('https://kikijinqili.github.io/assets/cocacola/audio/Pling-KevanGC-1485374730.mp3');
-audio.play();
+// audio.play();
 
 //bot-initiated dialogue
 class Question {
@@ -63,7 +63,7 @@ function askNextQuestion(answer_text) {
 			bot_typing = 1;
 			var next_question_text = prescripted_questions[next_question].text;
 			for(var i=0; i<next_question_text.length; i++) {
-				text = next_question_text[i];
+				post_text = next_question_text[i];
 				// if(text.indexOf('gif') > -1) {
 				// 	//post gif
 				// 	image = text;
@@ -76,7 +76,11 @@ function askNextQuestion(answer_text) {
 					/*setTimeout(function() {
 						postBotAnswer(text);
 					}, 2000);*/
-					post_text = text;
+				// post_text = text;
+				console.log('start answer');
+				setTimeout(function () {
+					postBotAnswer(post_text)
+				}, 1000);
 
 					// if (pretext_needed.includes(cur_question_index)) {
 					// 	post_text = pretext + post_text;
@@ -85,21 +89,23 @@ function askNextQuestion(answer_text) {
 					// if (text.split(' ').length > 22) { //long sentence
 					// 	setTimeout(function() {
 					// 		postBotAnswer(post_text)
-					// 	}, 8500*(i+1));
+					// 	}, 0);
 					// } else {
 					// 	setTimeout(function() {
 					// 		postBotAnswer(post_text)
-					// 	}, 5000*(i+1));
+					// 	}, 0);
 					// }
-				}
-			// }
+				// }
+			}
 			cur_question_index = next_question;
 			bot_typing = 0;
-		} else {
+		} else if(next_question === -1) {
 			// the last question
+			console.log('bye');
 			setTimeout(function() {
 				postBotAnswer("Thank you for chatting with me and visiting Coca-Cola's website.")
 			}, 3000);
+			// post_text = "Thank you for chatting with me and visiting Coca-Cola's website.";
 		}
 
 	} else {
@@ -131,9 +137,7 @@ function postBotAnswer(text)
 	// clearInterval(waitForBot);
 	
 	if (text!="") {
-    	// var audio = new Audio('https://kikijinqili.github.io/assets/cocacola/audio/Pling-KevanGC-1485374730.mp3');
-		audio.play();
-
+    	
 		var newNode = document.createElement("div");
     	newNode.setAttribute("class", "chat_message_bot");
     	var newImg = document.createElement("img");
@@ -145,6 +149,7 @@ function postBotAnswer(text)
     	document.getElementById("chat_box").insertBefore(newNode, spaceHolderNode);
     	document.getElementById("chat_box").scrollTop = document.getElementById("chat_box").scrollHeight;
 
+		audio.play();
 	}
 	
 	// setTimeout(function() {
@@ -180,20 +185,19 @@ function postBotAnswer(text)
 
 
 		//ask the first question
-		setTimeout(function() {
-			postBotAnswer(prescripted_questions[cur_question_index].text);
-			prescripted_mode = 1;
-		}, 1000);
-	
-		valid_input = true;
+		// setTimeout(function() {
+		// 	postBotAnswer(prescripted_questions[cur_question_index].text);
+		// 	prescripted_mode = 1;
+		// }, 1000);
+	 
+	//  valid_input = true;	
 	
 	// } else {
 		if(bye == 0 && bot_typing == 0) {
 			wait_for_bot_response = true;
 			askNextQuestion(text);
 			valid_input = true;	
-
-		} 
+		}
 	// }
 
 	newNode.appendChild(document.createTextNode(text));
@@ -242,11 +246,11 @@ function displayBot()
 	document.getElementById("chat_input").style.display = "block";
 
 	
-	// if(user_name == '') {
+	if(user_name == '') {
 		setTimeout(function() {
 		    postBotAnswer("Hi. I am Julia, Coca-Cola's chatbot powered by artificial intelligence. I am still learning so I might have difficulty understanding you sometimes, but I will answer your company-related questions.")
 		}, 500);
-	// }
+	}
 }
 
 
